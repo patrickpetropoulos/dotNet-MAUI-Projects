@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace News.ViewModels
 {
-    interface INavigate
+    public interface INavigate
     {
+      Task NavigateTo(string url);
+    Task PushModal( Page page );
+    Task PopModal();
     }
 }
