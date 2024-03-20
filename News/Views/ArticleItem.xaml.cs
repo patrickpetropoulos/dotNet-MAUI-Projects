@@ -1,6 +1,6 @@
 namespace News.Views;
 
-public partial class ArticleItem : ContentPage
+public partial class ArticleItem : ContentView
 {
 	public ArticleItem()
 	{

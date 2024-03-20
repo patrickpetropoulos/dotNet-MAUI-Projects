@@ -17,7 +17,7 @@ public partial class HeadlinesViewModel : ViewModel
   [ObservableProperty]
   private NewsResult currentNews;
 
-  public HeadlinesViewModel( INewsService newsService )
+  public HeadlinesViewModel( INewsService newsService, INavigate navigation): base(navigation)
   {
     this.newsService = newsService;
   }
@@ -35,10 +35,11 @@ public partial class HeadlinesViewModel : ViewModel
     CurrentNews = await newsService.GetNews( scope );
   }
   [RelayCommand]
-  public void ItemSelected(object selectedItem)
+  public async Task ItemSelected(object selectedItem)
   {
     var selectedArticle = selectedItem as Article;
     var url = HttpUtility.UrlEncode(selectedArticle.Url);
+    await Navigator.NavigateTo($"article?url={url}");
   } 
 
 }

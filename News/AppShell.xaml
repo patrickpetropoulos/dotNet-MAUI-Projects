@@ -7,12 +7,12 @@
     xmlns:local="clr-namespace:News">
 
     <FlyoutItem Title="Home" Icon="{StaticResource HomeIcon}">
-        <ShellContent Title="Headlines" Icon="{StaticResource HeadlinesIcon}">
-            <ContentPage Title="Headlines"/>
-        </ShellContent>
-        <Tab Title="News" Icon="{StaticResource NewsIcon}">
-            <ContentPage Title="Local" />
-            <ContentPage Title="Global" />
+        <ShellContent Title="Headlines" Icon="{StaticResource HeadlinesIcon}" Route="headlines" ContentTemplate="{DataTemplate views:HeadlinesView}"/>
+        
+
+        <Tab Title="News" Route="news" Icon="{StaticResource NewsIcon}">
+            <ShellContent Title="Local" Route="local" ContentTemplate="{DataTemplate views:HeadlinesView}"/>
+            <ShellContent Title="Global" Route="global" ContentTemplate="{DataTemplate views:HeadlinesView}"/>
         </Tab>
     </FlyoutItem>
 
