@@ -1,14 +1,11 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace News.ViewModels;
 
-namespace News.ViewModels;
+using CommunityToolkit.Mvvm.ComponentModel;
+
 [ObservableObject]
 public abstract partial class ViewModel
 {
-  public INavigate Navigator { get; init; }
-  internal ViewModel (INavigate navigator ) => Navigator = navigator;
+  public INavigate Navigation { get; init; }
+
+  internal ViewModel( INavigate navigation ) => Navigation = navigation;
 }

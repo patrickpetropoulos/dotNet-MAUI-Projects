@@ -1,43 +1,43 @@
 ﻿using Microsoft.Extensions.Logging;
-using News.ViewModels;
-using News.Views;
 
 namespace News;
+
 public static class MauiProgram
 {
   public static MauiApp CreateMauiApp()
   {
     var builder = MauiApp.CreateBuilder();
     builder
-      .UseMauiApp<App>()
-      .ConfigureFonts( fonts =>
-      {
-        fonts.AddFont( "FontAwesome.otf", "FontAwesome" );
-        fonts.AddFont( "OpenSans-Regular.ttf", "OpenSansRegular" );
-        fonts.AddFont( "OpenSans-Semibold.ttf", "OpenSansSemibold" );
-      } );
+        .UseMauiApp<App>()
+        .ConfigureFonts( fonts =>
+        {
+          fonts.AddFont( "FontAwesome.otf", "FontAwesome" );
+          fonts.AddFont( "OpenSans-Regular.ttf", "OpenSansRegular" );
+          fonts.AddFont( "OpenSans-Semibold.ttf", "OpenSansSemibold" );
+        } )
+        .RegisterAppTypes();
 
 #if DEBUG
-		builder.Logging.AddDebug();
+    builder.Logging.AddDebug();
 #endif
 
     return builder.Build();
   }
 
-  public static MauiAppBuilder RegisterAppTypes(this MauiAppBuilder builder )
+  public static MauiAppBuilder RegisterAppTypes( this MauiAppBuilder mauiAppBuilder )
   {
-    //Services 
-    builder.Services.AddSingleton<Services.INewsService>( ( serviceProvider ) => new Services.NewsService() );
-    builder.Services.AddSingleton<INavigate>(( serviceProvider ) => new Navigator() );
+    // Services
+    mauiAppBuilder.Services.AddSingleton<Services.INewsService>( ( serviceProvider ) => new Services.NewsService() );
+    mauiAppBuilder.Services.AddSingleton<ViewModels.INavigate>( ( serviceProvider ) => new Navigator() );
 
-    //ViewModels
-    builder.Services.AddTransient<HeadlinesViewModel>();
+    // ViewModels
+    mauiAppBuilder.Services.AddTransient<ViewModels.HeadlinesViewModel>();
 
     //Views
-    builder.Services.AddTransient<AboutView>();
-    builder.Services.AddTransient<HeadlinesView>();
-    builder.Services.AddTransient<ArticleView>();
+    mauiAppBuilder.Services.AddTransient<Views.AboutView>();
+    mauiAppBuilder.Services.AddTransient<Views.ArticleView>();
+    mauiAppBuilder.Services.AddTransient<Views.HeadlinesView>();
 
-    return builder;
+    return mauiAppBuilder;
   }
 }

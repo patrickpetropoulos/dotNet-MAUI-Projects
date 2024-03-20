@@ -4,19 +4,19 @@
              xmlns:views="clr-namespace:News.Views"
              xmlns:viewModels="clr-namespace:News.ViewModels"
              xmlns:models="clr-namespace:News.Models"
-             x:Name="headlinesView"
+             x:Name="headlinesview"
              x:Class="News.Views.HeadlinesView"
              x:DataType="viewModels:HeadlinesViewModel"
              Title="Home" Padding="14">
     <CollectionView ItemsSource="{Binding CurrentNews.Articles}">
         <CollectionView.EmptyView>
-            <Label Text="Loading..."/>
+            <Label Text="Loading" />
         </CollectionView.EmptyView>
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="models:Article">
                 <ContentView>
                     <ContentView.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BindingContext.ItemSelectedCommand, Source={x:Reference headlinesView}}" CommandParameter="{Binding .}"/>
+                        <TapGestureRecognizer Command="{Binding BindingContext.ItemSelectedCommand, Source={x:Reference headlinesview}}" CommandParameter="{Binding .}" />
                     </ContentView.GestureRecognizers>
                     <views:ArticleItem />
                 </ContentView>
