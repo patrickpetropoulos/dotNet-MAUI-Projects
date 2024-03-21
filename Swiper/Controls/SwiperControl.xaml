@@ -8,22 +8,30 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
-        <!--Content view for photo -->
-        <ContentView x:Name="photo" Padding="40" Grid.ColumnSpan="3">
-            <Grid x:Name="photoGrid" BackgroundColor="Black" Padding="1">
+        <!-- ContentView for photo here -->
+        <ContentView x:Name="photo" Padding="40" Grid.ColumnSpan="3" >
+            <Grid x:Name="photoGrid" BackgroundColor="Black" Padding="1" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="40" />
                 </Grid.RowDefinitions>
-                <BoxView Grid.RowSpan="2" BackgroundColor="White"/>
-                <Image x:Name="image" Margin="10" BackgroundColor="#AAAAAA" Aspect="AspectFill"/>
-                <Label x:Name="loadingLabel" Text="Loading..." 
-                       TextColor="White" FontSize="Large" 
-                       HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Label Grid.Row="1" x:Name="descriptionLabel" Margin="10,0" Text="A picture of grandpa" FontFamily="Bradley Hand"/>
+
+                <BoxView Grid.RowSpan="2" Color="White" />
+
+                <Image x:Name="image" Margin="10" BackgroundColor="#AAAAAA" Aspect="AspectFill" />
+
+                <Label x:Name="loadingLabel" Text="Loading..." TextColor="White" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+
+                <Label Grid.Row="1" x:Name="descriptionLabel" Margin="10,0" Text="A picture of grandpa" FontFamily="Bradley Hand" />
             </Grid>
         </ContentView>
         <!--StackLayout for like here -->
+        <StackLayout Grid.Column="2" x:Name="likeStackLayout" Opacity="0" Padding="0,100">
+            <Label Text="LIKE" TextColor="Lime" FontSize="30" Rotation="30" FontAttributes="Bold"/>
+        </StackLayout>
         <!--StackLayout for deny here -->
+        <StackLayout x:Name="denyStackLayout" Opacity="0" Padding="0,100" HorizontalOptions="Start">
+            <Label Text="DENY" TextColor="Red" FontSize="30" Rotation="-20" FontAttributes="Bold"/>
+        </StackLayout>
     </Grid>
 </ContentView>
